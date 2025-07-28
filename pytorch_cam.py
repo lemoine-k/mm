@@ -48,21 +48,24 @@ class SemanticSegmentationTarget:
 
 def main():
     parser = ArgumentParser()
-    parser.add_argument('img', help='Image file')
-    parser.add_argument('config', help='Config file')
-    parser.add_argument('checkpoint', help='Checkpoint file')
+    parser.add_argument('--img', help='Image file',
+                        default='data/ds_dagm/images/test/132.png')
+    parser.add_argument('--config', help='Config file',
+                        default='configs/segformer/segformer_mit-b5_2xb4-20k_ds_dagm-512x512.py')
+    parser.add_argument('--checkpoint', help='Checkpoint file',
+                        default='work_dirs/segformer_mit-b5_2xb4-20k_ds_dagm-512x512/best_mIoU_iter_16000.pth')
     parser.add_argument(
         '--out-file',
-        default='prediction.png',
+        # default='prediction.png',
         help='Path to output prediction file')
     parser.add_argument(
         '--cam-file', default='vis_cam.png', help='Path to output cam file')
     parser.add_argument(
         '--target-layers',
-        default='backbone.layer4[2]',
+        default='backbone.layers[-2][-1]', # backbone.detail.detail_branch[-1][-1].activate
         help='Target layers to visualize CAM')
     parser.add_argument(
-        '--category-index', default='7', help='Category to visualize CAM')
+        '--category-index', default='4', help='Category to visualize CAM')
     parser.add_argument(
         '--device', default='cuda:0', help='Device used for inference')
     args = parser.parse_args()
@@ -112,9 +115,18 @@ def main():
     targets = [
         SemanticSegmentationTarget(category, mask_float, (height, width))
     ]
+
+    def reshape_transform(tensor, height=32, width=32):
+        result = tensor.reshape(tensor.size(0), height, width, tensor.size(2))
+        result = result.transpose(2, 3).transpose(1, 2)
+        return result
+
+
     with GradCAM(
             model=model,
-            target_layers=target_layers) as cam:
+            target_layers=target_layers,
+            reshape_transform=reshape_transform
+            ) as cam:
         grayscale_cam = cam(input_tensor=input_tensor, targets=targets)[0, :]
         cam_image = show_cam_on_image(rgb_img, grayscale_cam, use_rgb=True)
 

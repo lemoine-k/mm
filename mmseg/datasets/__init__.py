@@ -6,8 +6,8 @@ from .bdd100k import BDD100KDataset
 from .chase_db1 import ChaseDB1Dataset
 from .cityscapes import CityscapesDataset
 from .coco_stuff import COCOStuffDataset
-from .dark_zurich import DarkZurichDataset
 from .dagm import DAGMDataset
+from .dark_zurich import DarkZurichDataset
 from .dataset_wrappers import MultiImageMixDataset
 from .decathlon import DecathlonDataset
 from .drive import DRIVEDataset
@@ -21,6 +21,9 @@ from .levir import LEVIRCDDataset
 from .lip import LIPDataset
 from .loveda import LoveDADataset
 from .mapillary import MapillaryDataset_v1, MapillaryDataset_v2
+from .msd import MSDDataset
+from .mt import MTDataset
+from .neu import NeuSegDataset
 from .night_driving import NightDrivingDataset
 from .nyu import NYUDataset
 from .pascal_context import PascalContextDataset, PascalContextDataset59
@@ -63,5 +66,6 @@ __all__ = [
     'MapillaryDataset_v2', 'Albu', 'LEVIRCDDataset',
     'LoadMultipleRSImageFromFile', 'LoadSingleRSImageFromFile',
     'ConcatCDInput', 'BaseCDDataset', 'DSDLSegDataset', 'BDD100KDataset',
-    'NYUDataset', 'HSIDrive20Dataset', 'KSDD2Dataset', 'DAGMDataset'
+    'NYUDataset', 'HSIDrive20Dataset', 'KSDD2Dataset', 'DAGMDataset',
+    'NeuSegDataset', 'MSDDataset', 'MTDataset'
 ]

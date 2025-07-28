@@ -8,5 +8,5 @@
 #    --shape INPUT_SHAPE
 
 python tools/analysis_tools/get_flops.py \
-        configs/bisenetv2/bisenetv2_fcn_2xb4-20k_ds_dagm-512x512.py \
+        configs/mixbisenetv2/segformer_mixbisenetv2_2xb4-20k_ds_dagm-512x512.py \
         --shape 512 512

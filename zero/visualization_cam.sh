@@ -14,5 +14,9 @@
 #    --category-index CATEGORY_INDEX
 
 python tools/analysis_tools/visualization_cam.py \
-        data/ds_dagm/images/test/63.png \
-        configs/bisenetv2/bisenetv2_fcn_2xb4-20k_ds_dagm-512x512.py \
+        data/ds_dagm/images/test/226.png \
+        configs/aaaaa/segformer-defect-mitb0-2xb4-20k_ds_dagm-512x512.py \
+        work_dirs/segformer-defect-mitb0-2xb4-20k_ds_dagm-512x512/best_mIoU_iter_10000.pth \
+        --target-layers backbone.detail.detail_branch[1][-1].activate \
+        --category-index 3
+

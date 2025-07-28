@@ -17,6 +17,8 @@ from .up_conv_block import UpConvBlock
 from .wrappers import Upsample, resize
 from .san_layers import MLP, LayerNorm2d, cross_attn_layer
 
+from .contmix import ContMixBlock
+
 __all__ = [
     'ResLayer', 'SelfAttentionBlock', 'make_divisible', 'InvertedResidual',
     'UpConvBlock', 'InvertedResidualV3', 'SELayer', 'PatchEmbed',

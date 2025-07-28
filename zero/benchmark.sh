@@ -8,5 +8,5 @@
 #    %CHECKPOINT_FILE \
 
 python tools/analysis_tools/benchmark.py \
-    configs/bisenetv2/bisenetv2_fcn_2xb4-20k_ds_dagm-512x512.py \
-    work_dirs/bisenetv2_fcn_2xb4-20k_ds_dagm-512x512/best_mIoU_iter_16000.pth
+    configs/mixbisenetv2/mixbisenetv2_fcn_2xb4-20k_ds_dagm-512x512.py \
+    work_dirs/mixbisenetv2_fcn_2xb4-20k_ds_dagm-512x512/best_mIoU_iter_18000.pth

@@ -14,7 +14,7 @@ class DAGMDataset(BaseSegDataset):
     """
     METAINFO = dict(
         classes=('background', 'scratch', 'texture', 'crush', 'color', 'dirty'),
-        palette=[[0, 0, 0], [255, 0, 0], [0, 255, 0], [0, 0, 255], [255, 255, 0], [255, 0, 255]])
+        palette=[[0, 0, 0], [128, 0, 0], [0, 128, 0], [128, 128, 0], [0, 0, 128], [128, 0, 128]])
 
     def __init__(self,
                  img_suffix='.png',

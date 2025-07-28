@@ -9,7 +9,9 @@ checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segfor
 model = dict(
     data_preprocessor=data_preprocessor,
     backbone=dict(init_cfg=dict(type='Pretrained', checkpoint=checkpoint)),
-    decode_head=dict(num_classes=6))
+    decode_head=dict(
+        num_classes=6,
+        sampler=dict(type='OHEMPixelSampler', thresh=0.7, min_kept=100000)))
 
 optim_wrapper = dict(
     _delete_=True,

@@ -1,15 +1,16 @@
 _base_ = [
     '../_base_/models/segformer_mit-b0.py',
-    '../_base_/datasets/ds_dagm_512x512.py',
+    '../_base_/datasets/neu_seg_224x224.py',
     '../_base_/default_runtime.py', '../_base_/schedules/schedule_20k.py'
 ]
-crop_size = (512, 512)
+crop_size = (224, 224)
 data_preprocessor = dict(size=crop_size)
 checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segformer/mit_b0_20220624-7e0fe6dd.pth'  # noqa
 model = dict(
     data_preprocessor=data_preprocessor,
-    backbone=dict(init_cfg=dict(type='Pretrained', checkpoint=checkpoint)),
-    decode_head=dict(num_classes=6))
+    # backbone=dict(init_cfg=dict(type='Pretrained', checkpoint=checkpoint)),
+    backbone=dict(init_cfg=None),
+    decode_head=dict(num_classes=4))
 
 optim_wrapper = dict(
     _delete_=True,

@@ -71,8 +71,8 @@ test_dataloader = dict(
         type=dataset_type,
         data_root=data_root,
         data_prefix=dict(
-            img_path='images/val',
-            seg_map_path='annotations/val'),
+            img_path='images/test',
+            seg_map_path='annotations/test'),
         pipeline=test_pipeline))
 
 val_evaluator = dict(type='IoUMetric', iou_metrics=['mIoU', 'mFscore'])
